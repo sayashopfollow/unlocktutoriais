@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial | Aim Pro - OS GURI XITADO</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <style>
+        /* PALETA: #1C1C1C (Fundo Body), #2A2A2A (Header/Blocos), #111111 (Code/Destaque Fundo) */
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1C1C1C;
+            color: #E0E0E0;
+            line-height: 1.6;
+            visibility: visible; 
+        }
+
+        /* --- ESTILO GERAL DE TUTORIAL --- */
+        header {
+            background-color: #2A2A2A;
+            color: #E0E0E0;
+            padding: 25px 20px;
+            text-align: center;
+            border-bottom: 5px solid #A020F0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.2em;
+            color: #00A8FF;
+            text-shadow: 0 0 10px rgba(0, 168, 255, 0.4);
+        }
+        header p {
+            margin: 5px 0 0 0;
+            font-size: 1.1em;
+            color: #B0B0B0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        h2 {
+            color: #00FFC0;
+            border-bottom: 2px solid #00FFC040;
+            padding-bottom: 10px;
+            margin-top: 35px;
+            font-size: 1.8em;
+            font-weight: 600;
+        }
+        h3 {
+            color: #A020F0;
+            margin-top: 25px;
+            font-size: 1.4em;
+            font-weight: 500;
+        }
+
+        /* --- ESTILO PARA VÍDEOS EMBUTIDOS (Corrigido para usar .video-responsive) --- */
+        .video-responsive {
+            position: relative;
+            padding-bottom: 56.25%; /* Proporção 16:9 */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background: #000; /* Fundo Preto */
+            margin: 25px 0; /* Espaçamento */
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Sombra mais destacada */
+        }
+        .video-responsive iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0; /* Sem borda */
+        }
+        /* --- FIM ESTILO VÍDEOS --- */
+
+        .code-block {
+            background-color: #111111;
+            color: #FFD700;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 0.9em;
+            border: 1px solid #3A3A3A;
+            margin: 15px 0;
+        }
+        
+        .atencao {
+            background-color: #470000;
+            color: #FFD700;
+            padding: 15px;
+            border-left: 5px solid #FF6347;
+            border-radius: 4px;
+            margin: 20px 0;
+            font-size: 1.1em;
+            display: flex;
+            align-items: center;
+        }
+        .atencao i {
+            font-size: 1.5em;
+            margin-right: 10px;
+            color: #FF6347;
+        }
+        
+        .link-download {
+            background: linear-gradient(90deg, #00A8FF 0%, #A020F0 100%);
+            color: white;
+            padding: 15px 25px;
+            display: inline-block;
+            margin-top: 20px;
+            margin-bottom: 20px; /* Adicionado margem para separar do hr */
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+        .link-download:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.7);
+        }
+
+        ul {
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+        li {
+            margin-bottom: 10px;
+            color: #CCC;
+        }
+
+        footer {
+            margin-top: 50px;
+            padding: 20px;
+            color: #555;
+            font-size: 0.8em;
+            background-color: #2A2A2A;
+            text-align: center;
+        }
+
+        /* --- ESTILO DO PRELOADER (LOGO GIRATÓRIO) --- */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #1C1C1C; 
+            z-index: 9999; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+        #preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        .preloader-logo {
+            width: 100px; 
+            height: 100px;
+            animation: spin 1.5s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .preloader-text {
+            color: #00A8FF;
+            margin-top: 15px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="preloader">
+        <img src="imagens/preloader-logo.png" alt="Logo OS GURI XITADO" class="preloader-logo">
+        <p class="preloader-text">Carregando tutorial do AIM PRO...</p>
+    </div>
+
+    <header>
+        <h1><i class="fa-solid fa-crosshairs" style="margin-right: 10px;"></i> TUTORIAL AIM PRO</h1>
+        <p>Guia oficial de instalação e uso exclusivo para a função Aim Pro.</p>
+    </header>
+
+    <div class="container">
+        
+        <h2><i class="fa-solid fa-toolbox" style="margin-right: 10px;"></i> 1️⃣ Drivers e Bibliotecas Essenciais</h2>
+        
+        <p>Estes componentes são **obrigatórios** para a execução de todos os nossos produtos. Instale ambos antes de prosseguir:</p>
+        
+        <ul style="list-style-type: none; padding-left: 0;">
+            <li>
+                <strong style="color: #00FFC0;">VISUAL C++ Redistributable:</strong> 
+                <a href="https://aka.ms/vs/17/release/vc_redist.x64.exe" target="_blank" style="color: #00A8FF; text-decoration: none;">
+                    [ CLIQUE PARA BAIXAR ]
+                </a>
+            </li>
+            <li>
+                <strong style="color: #00FFC0;">DIRECT X3D:</strong> 
+                <a href="https://www.microsoft.com/pt-br/download/details.aspx?id=35&msockid=0b6a3957e50162270f8b2c33e456630c" target="_blank" style="color: #00A8FF; text-decoration: none;">
+                    [ CLIQUE PARA BAIXAR ]
+                </a>
+            </li>
+        </ul>
+        
+        <hr style="border-color: #3A3A3A; margin: 30px 0;">
+
+        <h2><i class="fa-solid fa-cloud-arrow-down" style="margin-right: 10px;"></i> 2️⃣ Download do Loader</h2>
+        
+        <p>Baixe o nosso Loader (executável) através do link. **Lembre-se de desativar temporariamente o Windows Defender e outros antivírus**.</p>
+
+        <p style="text-align: center;">
+            <a href="https://drive.google.com/file/d/1kYkYvAshoZQfy01zM6MtdV44bARcIlTC/view?usp=sharing" target="_blank" class="link-download">
+                <i class="fa-solid fa-download" style="margin-right: 10px;"></i> CLIQUE AQUI PARA BAIXAR O LOADER (SENHA : 123)
+            </a>
+        </p>
+        
+        <hr style="border-color: #3A3A3A; margin: 30px 0;">
+
+        <h2><i class="fa-solid fa-code" style="margin-right: 10px;"></i> 3️⃣ Instalação e Execução</h2>
+
+        <p>Siga os passos exatamente nesta ordem para garantir uma injeção limpa e segura:</p>
+        <ul style="list-style-type: decimal; padding-left: 25px;">
+            <li>Execute o arquivo do Loader (baixado no Passo 2) como **Administrador**.</li>
+            <li style="color: #FF6347; font-weight: bold;">Após instalar todos os Drivers do **Passo 1**, **REINICIE SEU COMPUTADOR** antes de logar.</li>
+            <li>Insira a sua chave de acesso e clique em "Logar".</li>
+            <li>O Loader fará o pré-carregamento e injetará o Aim Pro no seu sistema.</li>
+            <li>Feche o Loader e **inicie o Valorant**. O menu do Aim Pro aparecerá automaticamente.</li>
+        </ul>
+        
+        <div class="atencao">
+            <i class="fa-solid fa-gear" style="margin-right: 10px;"></i>
+            <strong>CONFIGURAÇÃO AIM PRO:</strong> Use as teclas **INSERT** ou **HOME** para abrir e fechar o menu.
+        </div>
+        
+        <h2 style="margin-top: 50px;"><i class="fa-solid fa-video" style="margin-right: 10px;"></i> 4️⃣ Vídeos Tutoriais</h2>
+        
+        <h3 style="margin-top: 30px; color: #00A8FF; font-weight: bold;">ENGLISH TUTORIAL</h3>
+        <p>Watch the video below for a complete installation and configuration guide in English.</p>
+        
+        <div class="video-responsive">
+            <iframe 
+                src="https://www.youtube.com/embed/b6Sa71gBeOU" 
+                title="Aim Pro Full Tutorial - ENGLISH" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen>
+            </iframe>
+        </div>
+        
+        <h3 style="margin-top: 40px; color: #00A8FF; font-weight: bold;">TUTORIAL EM VIDEO PORTUGUES-BR:</h3>
+        <p>Assista ao vídeo abaixo para ver o processo de instalação e configuração do Aim Pro em detalhes.</p>
+
+        <div class="video-responsive">
+            <iframe 
+                src="https://www.youtube.com/embed/wGZk07qwtUc" 
+                title="Tutorial Completo Aim Pro - PORTUGUÊS-BR" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen>
+            </iframe>
+        </div>
+        </div>
+
+    <footer>
+        <p style="font-size: 1em; margin-bottom: 10px; color: #E0E0E0;">@everyone</p>
+        &copy; 2024 OS GURI XITADO. Todos os direitos reservados.
+    </footer>
+
+    <script>
+        // FUNÇÃO DE PRELOADER (Aplica o giro e some após 1.5s)
+        window.addEventListener('load', function() {
+            const preloader = document.getElementById('preloader');
+            
+            // Simula um tempo de carregamento de 1.5 segundos
+            setTimeout(() => {
+                preloader.classList.add('hidden');
+            }, 1500);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Central de Tutoriais</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+#splash-screen {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: #000;
+display: flex;
+justify-content: center;
+align-items: center;
+z-index: 10000;
+transition: opacity 0.6s ease, visibility 0.6s;
+}
+
+    .login-card {
+        background: #0a0a0a;
+        width: 350px;
+        padding: 40px;
+        border-radius: 40px;
+        text-align: center;
+        border: 1px solid #1a1a1a;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    }
+
+    .profile-area {
+        position: relative;
+        width: 120px;
+        margin: 0 auto 25px;
+    }
+
+    .profile-gif {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        border: 2px solid #1e3a8a;
+        object-fit: cover;
+    }
+
+    .verified-badge {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        background: #0a0a0a;
+        border: 1px solid #ff4b4b;
+        color: #ff4b4b;
+        border-radius: 5px;
+        padding: 2px 5px;
+        font-size: 10px;
+    }
+
+    .title-main {
+        color: white;
+        font-size: 26px;
+        font-weight: 900;
+        font-style: italic;
+        margin-bottom: 30px;
+        letter-spacing: -1px;
+        text-transform: uppercase;
+    }
+
+    .highlight-red { color: #ff4b4b; }
+
+    .support-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: #050505;
+        color: #fff;
+        text-decoration: none;
+        padding: 12px;
+        border-radius: 50px;
+        font-size: 11px;
+        margin-bottom: 35px;
+        border: 1px solid #111;
+        font-weight: bold;
+    }
+
+    .support-link span { color: #ff4b4b; }
+
+    #btn-entrar {
+        width: 100%;
+        padding: 18px;
+        border-radius: 15px;
+        border: none;
+        background: linear-gradient(90deg, #1e3a8a, #ff4b4b);
+        color: white;
+        font-weight: 900;
+        font-size: 16px;
+        cursor: pointer;
+        box-shadow: 0 10px 25px rgba(255, 75, 75, 0.4);
+        transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    #btn-entrar:hover { transform: scale(1.05); }
+
+    .pagination-dots { margin-top: 30px; display: flex; justify-content: center; gap: 8px; }
+    .dot { width: 6px; height: 6px; background: #222; border-radius: 50%; }
+    .dot.active { background: #ff4b4b; }
+    body {
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #000000;
+        color: #E0E0E0;
+        text-align: center;
+    }
+
+    header {
+        background-color: #0a0a0a;
+        padding: 20px 20px 45px 20px; 
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        position: relative; 
+        border-bottom: 1px solid #1a1a1a;
+    }
+    
+    .header-content {
+        display: flex;
+        align-items: center;
+        width: 90%;
+        max-width: 1200px;
+        justify-content: space-between;
+    }
+
+    .logo-area img {
+        height: 90px;
+    }
+
+    .titulo-area {
+        text-align: right;
+    }
+    
+    h1 {
+        background: linear-gradient(90deg, #1e3a8a 0%, #ff4b4b 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        color: transparent;
+        font-size: 2.5em;
+        margin: 0;
+        font-weight: 600;
+        text-shadow: 0 0 10px rgba(30, 58, 138, 0.3);
+        letter-spacing: 1px;
+    }
+
+    .subtitulo {
+        color: #AAAAAA; 
+        margin-top: 5px;
+        font-size: 1.1em;
+        font-weight: 300;
+    }
+
+    .music-controls-container {
+        position: absolute;
+        top: 40px; 
+        right: 20px;
+        display: flex; 
+        align-items: center;
+        gap: 8px; 
+        padding: 5px 0;
+    }
+
+    #volumeSlider {
+        -webkit-appearance: none; 
+        appearance: none;
+        width: 100px; 
+        height: 6px; 
+        background: #3a3a3a; 
+        outline: none;
+        opacity: 0.9;
+        transition: opacity .2s;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+
+    #volumeSlider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 16px; height: 16px; border-radius: 50%; background: linear-gradient(90deg, #1e3a8a, #ff4b4b);
+        cursor: pointer; box-shadow: 0 0 5px rgba(30, 58, 138, 0.5);
+    }
+
+    #radioIndicatorContainer {
+        position: absolute; bottom: 0; left: 0; width: 100%;
+        background-color: #1A1A1A; color: #CCCCCC; padding: 8px 20px;
+        font-size: 0.9em; font-weight: 500; text-align: center; border-top: 1px solid #333333;
+        box-sizing: border-box; 
+    }
+
+    .produtos-container {
+        display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; padding: 50px 20px 20px 20px;
+    }
+
+    .produto-card {
+        background-color: #0a0a0a; border-radius: 10px; width: 320px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6); overflow: hidden;
+        text-align: left; transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer; position: relative; border: 1px solid #1a1a1a;
+    }
+
+    .produto-card:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 75, 75, 0.4); }
+    
+    .card-imagem-area { position: relative; width: 100%; height: 200px; z-index: 1; }
+    .card-imagem, .card-video { width: 100%; height: 100%; object-fit: cover; display: block; transition: opacity 0.3s ease; position: absolute; top: 0; left: 0; }
+    .card-video { opacity: 0; z-index: 2; }
+    .produto-card:hover .card-video { opacity: 1; }
+    .produto-card:hover .card-imagem { opacity: 0; }
+    
+    .card-badges-area { display: flex; margin-top: 15px; padding: 0 15px; gap: 8px; position: relative; z-index: 5; }
+    .badge { display: flex; align-items: center; padding: 5px 10px; border-radius: 6px; font-size: 0.8em; font-weight: bold; color: white; text-transform: uppercase; }
+    .badge.atualizado { background-color: #1e3a8a; }
+    .badge.indetectavel { background-color: #2ECC71; }
+    .badge.manutencao { background-color: #e67e22; }
+    .badge.update { background-color: #3498db; }
+
+    .card-content { padding: 15px 20px 25px 20px; }
+    .card-title-lock { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+    .card-title-lock h2 { font-size: 1.4em; color: #E0E0E0; margin: 0; font-weight: 700; }
+    .card-title-lock .fa-lock { color: #ff4b4b; font-size: 1.2em; }
+    
+    .ver-tutorial-btn {
+        display: block; text-align: center; padding: 12px 0; border-radius: 6px;
+        text-decoration: none; font-weight: bold; font-size: 1.1em;
+        background: linear-gradient(90deg, #1e3a8a 0%, #ff4b4b 100%);
+        color: white; transition: transform 0.2s ease; border: none; cursor: pointer;
+    }
+
+    .suporte-cta-container { padding: 60px 20px; text-align: center; max-width: 1000px; margin: 0 auto; }
+    .suporte-cta-btn { 
+        display: inline-flex; align-items: center; padding: 18px 45px; border-radius: 10px;
+        text-decoration: none; font-weight: bold; font-size: 1.5em; background: linear-gradient(90deg, #1e3a8a 0%, #ff4b4b 100%);
+        color: white; transition: transform 0.3s ease; border: none;
+    }
+
+    footer { margin-top: 50px; padding: 20px; color: #555; font-size: 0.8em; background-color: #0a0a0a; }
+
+    .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.85); }
+    .modal-content { background-color: #0a0a0a; margin: 15% auto; padding: 30px; border: 1px solid #1a1a1a; width: 90%; max-width: 400px; border-radius: 8px; text-align: center; }
+    #keyInput { width: calc(100% - 22px); padding: 12px; margin-bottom: 15px; background-color: #000; color: #fff; border: 1px solid #333; border-radius: 4px; }
+    
+    .modal-content button {
+        padding: 12px 25px;
+        background: linear-gradient(90deg, #1e3a8a, #ff4b4b);
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: bold;
+        margin-top: 15px;
+    }
+:root{
+    --blue:#2563ff;
+    --blue-soft:#38bdf8;
+    --red:#ff3b5c;
+    --bg:#030408;
+    --panel:rgba(10,13,22,.78);
+    --line:rgba(80,120,255,.16);
+}
+html{scroll-behavior:smooth}
+body{
+    background:
+      radial-gradient(circle at 50% -10%, rgba(37,99,255,.14), transparent 35%),
+      radial-gradient(circle at 90% 35%, rgba(255,59,92,.07), transparent 28%),
+      #030408;
+    overflow-x:hidden;
+}
+body::before{
+    content:"";
+    position:fixed; inset:0; pointer-events:none; z-index:-3;
+    background-image:
+      linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
+    background-size:52px 52px;
+    mask-image:linear-gradient(to bottom, black 0%, transparent 85%);
+}
+.fx-grid{
+    position:fixed; inset:0; pointer-events:none; z-index:-2; opacity:.35;
+    background:
+      linear-gradient(90deg, transparent 49.8%, rgba(37,99,255,.07) 50%, transparent 50.2%),
+      linear-gradient(0deg, transparent 49.8%, rgba(255,59,92,.05) 50%, transparent 50.2%);
+    background-size:180px 180px;
+    transform:perspective(600px) rotateX(60deg) scale(1.6) translateY(18%);
+    transform-origin:center bottom;
+}
+.fx-orb{
+    position:fixed; width:380px; height:380px; border-radius:50%;
+    pointer-events:none; z-index:-1; filter:blur(80px); opacity:.12;
+    will-change:transform;
+    animation:floatOrb 14s ease-in-out infinite alternate;
+}
+.orb-one{background:#1e5bff; top:8%; left:-180px}
+.orb-two{background:#ff3055; right:-180px; top:48%; animation-delay:-6s}
+.fx-scanlines{
+    position:fixed; inset:0; pointer-events:none; z-index:9998; opacity:.025;
+    background:repeating-linear-gradient(to bottom, #fff 0, #fff 1px, transparent 1px, transparent 5px);
+}
+@keyframes floatOrb{to{transform:translate3d(70px,35px,0) scale(1.12)}}
+
+header{
+    background:linear-gradient(180deg,rgba(7,10,18,.94),rgba(5,7,12,.82)) !important;
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid rgba(60,100,255,.2) !important;
+    box-shadow:0 15px 60px rgba(0,0,0,.55), 0 1px 0 rgba(255,255,255,.025) inset !important;
+}
+header::before{
+    content:""; position:absolute; left:5%; right:5%; bottom:34px; height:1px;
+    background:linear-gradient(90deg,transparent,#2563ff,#ff3b5c,transparent);
+    opacity:.7;
+}
+.logo-area img{
+    filter:drop-shadow(0 0 18px rgba(37,99,255,.32)) drop-shadow(0 0 10px rgba(255,59,92,.12));
+}
+.titulo-area h1{
+    font-weight:900; letter-spacing:-1px;
+    text-shadow:0 0 30px rgba(37,99,255,.2);
+}
+.subtitulo{color:#8791a7 !important}
+
+.produtos-container{
+    position:relative; z-index:1; gap:22px; padding-top:46px;
+}
+.produto-card{
+    background:linear-gradient(145deg,rgba(13,17,28,.92),rgba(5,7,12,.94)) !important;
+    border:1px solid rgba(93,117,180,.16) !important;
+    box-shadow:0 18px 55px rgba(0,0,0,.42), 0 0 0 1px rgba(255,255,255,.015) inset !important;
+    backdrop-filter:blur(12px);
+    transition:transform .35s cubic-bezier(.2,.8,.2,1),border-color .35s,box-shadow .35s !important;
+}
+.produto-card::after{
+    content:""; position:absolute; inset:0; pointer-events:none; border-radius:inherit;
+    background:linear-gradient(125deg,rgba(37,99,255,.08),transparent 35%,rgba(255,59,92,.055));
+    opacity:0; transition:opacity .35s;
+}
+.produto-card:hover{
+    transform:translateY(-10px) scale(1.012) !important;
+    border-color:rgba(62,116,255,.48) !important;
+    box-shadow:0 25px 70px rgba(0,0,0,.62),0 0 35px rgba(37,99,255,.12),0 0 1px #ff3b5c inset !important;
+}
+.produto-card:hover::after{opacity:1}
+.card-imagem-area{overflow:hidden}
+.card-imagem{transition:transform .6s ease,opacity .3s !important}
+.produto-card:hover .card-imagem{transform:scale(1.06)}
+.badge{box-shadow:0 4px 18px rgba(0,0,0,.2)}
+.badge.atualizado{background:linear-gradient(135deg,#1744a8,#2563ff) !important}
+.badge.indetectavel{background:linear-gradient(135deg,#16845c,#22c55e) !important}
+.ver-tutorial-btn,.suporte-cta-btn,#btn-entrar{
+    background:linear-gradient(110deg,#173b9b 0%,#2563ff 46%,#ff3b5c 100%) !important;
+    background-size:180% 100%;
+    box-shadow:0 10px 30px rgba(37,99,255,.15),0 8px 24px rgba(255,59,92,.12);
+    transition:transform .25s,background-position .5s,box-shadow .25s !important;
+}
+.ver-tutorial-btn:hover,.suporte-cta-btn:hover,#btn-entrar:hover{
+    background-position:100% 0; box-shadow:0 14px 35px rgba(37,99,255,.25),0 10px 28px rgba(255,59,92,.18);
+}
+.suporte-cta-container{
+    position:relative; z-index:1;
+    margin-top:35px; padding:70px 20px;
+}
+.suporte-cta-container::before{
+    content:""; position:absolute; left:10%; right:10%; top:0; height:1px;
+    background:linear-gradient(90deg,transparent,var(--blue),var(--red),transparent);
+}
+footer{
+    background:rgba(5,7,12,.88) !important;
+    border-top:1px solid rgba(80,120,255,.1);
+}
+.live-stats{
+    position:relative; z-index:2; width:min(1100px,calc(100% - 40px));
+    margin:34px auto 0; display:flex; justify-content:center;
+}
+.stat-card{
+    position:relative; overflow:hidden; min-width:310px;
+    padding:22px 34px; border:1px solid rgba(77,118,255,.2);
+    border-radius:18px; background:linear-gradient(135deg,rgba(13,18,31,.88),rgba(7,9,16,.78));
+    box-shadow:0 18px 55px rgba(0,0,0,.35),0 0 30px rgba(37,99,255,.06);
+    backdrop-filter:blur(14px);
+}
+.stat-card::before{
+    content:""; position:absolute; left:0; top:0; width:100%; height:2px;
+    background:linear-gradient(90deg,transparent,#2563ff,#ff3b5c,transparent);
+}
+.stat-label{
+    display:flex; align-items:center; justify-content:center; gap:9px;
+    color:#8f9bb3; font-size:11px; font-weight:800; letter-spacing:2px; text-transform:uppercase;
+}
+.stat-live{
+    width:7px; height:7px; border-radius:50%; background:#22c55e;
+    box-shadow:0 0 12px #22c55e; animation:pulseLive 1.5s infinite;
+}
+.stat-number{
+    margin-top:5px; font-size:clamp(38px,5vw,54px); line-height:1;
+    font-weight:950; letter-spacing:-2px; color:#fff;
+    font-variant-numeric:tabular-nums;
+    text-shadow:0 0 24px rgba(37,99,255,.25);
+}
+.stat-number .plus{color:#ff3b5c}
+.stat-sub{margin-top:8px;color:#606b82;font-size:11px}
+@keyframes pulseLive{50%{opacity:.35;transform:scale(.72)}}
+
+@media (max-width:700px){
+    .header-content{width:94%; flex-direction:column; gap:12px}
+    .titulo-area{text-align:center}
+    .logo-area img{height:70px}
+    .music-controls-container{position:static;margin:12px 0 30px}
+    .live-stats{width:calc(100% - 28px); margin-top:25px}
+    .stat-card{min-width:0;width:100%;padding:20px}
+    .produto-card{width:min(360px,92vw)}
+    .fx-grid{opacity:.18}
+}
+@media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation-duration:.001ms !important;transition-duration:.001ms !important}
+}
+</style>
+</head>
+<body>
+<div class="fx-grid" aria-hidden="true"></div>
+<div class="fx-orb orb-one" aria-hidden="true"></div>
+<div class="fx-orb orb-two" aria-hidden="true"></div>
+<div class="fx-scanlines" aria-hidden="true"></div>
+
+<div id="splash-screen">
+    <div class="login-card">
+        <div class="profile-area">
+            <img src="logo.gif" alt="Logo" class="profile-gif">
+            <div class="verified-badge">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+        </div>
+        
+        <h1 class="title-main">CENTRAL DE <span class="highlight-red">TUTORIAIS</span></h1>
+        
+        <a href="https://discord.gg/crazzy" target="_blank" class="support-link">
+            <i class="fa-brands fa-discord"></i> PROBLEMAS? <span>SERVER CAIU, ACESSEM O NOVO!</span>
+        </a>
+        
+        <button id="btn-entrar" onclick="entrarNoSite()">ENTRAR <i class="fa-solid fa-chevron-right"></i></button>
+        
+        <div class="pagination-dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+    </div>
+</div>
+
+<header>
+    <div class="header-content">
+        <div class="logo-area">
+            <img src="logo.gif" alt="Logo">
+        </div>
+
+        <div class="titulo-area">
+            <h1>CENTRO DE RECURSOS PRO</h1>
+            <p class="subtitulo">Acesso aos Guias e Tutoriais de Instalação dos Produtos.</p>
+        </div>
+    </div>
+    
+    <div class="music-controls-container">
+        <i class="fa-solid fa-volume-low" style="font-size: 1.1em; color: #ff4b4b;"></i>
+        <input type="range" id="volumeSlider" min="0" max="50" value="10" step="5" oninput="setMusicVolume(this.value)">
+        <i class="fa-solid fa-volume-high" style="font-size: 1.1em; color: #1e3a8a;"></i>
+    </div>
+
+    <div id="radioIndicatorContainer">
+        <i class="fa-solid fa-signal" style="margin-right: 8px; color: #1e3a8a;"></i>
+        <span id="radioIndicatorText">Iniciando a Rádio Unlock All...</span>
+    </div>
+</header>
+
+<section class="live-stats" aria-label="Estatísticas da comunidade">
+    <div class="stat-card">
+        <div class="stat-label"><span class="stat-live"></span> Comunidade ativa</div>
+        <div class="stat-number"><span id="buyersCount">0</span><span class="plus">+</span></div>
+        <div class="stat-sub">pessoas que já adquiriram nossos produtos</div>
+    </div>
+</section>
+
+<div class="produtos-container">
+    <div class="produto-card" data-tutorial="tutorial-skin-changer.html" onmouseenter="playVideo(this); playSelectionSound();" onmouseleave="pauseVideo(this)">
+        <div class="card-imagem-area">
+            <video class="card-video" muted loop preload="none">
+                <source src="videos/skin-changer-preview.mp4" type="video/mp4">
+            </video>
+            <img src="imagens/skin-changer-capa.jpg" alt="Imagem Skin Changer" class="card-imagem">
+        </div>
+        <div class="card-badges-area">
+            <div class="badge atualizado"><i class="fa-solid fa-circle-check"></i> ATUALIZADO</div>
+            <div class="badge indetectavel"><i class="fa-solid fa-shield-halved"></i> INDETECTÁVEL</div>
+        </div>
+        <div class="card-content">
+            <div class="card-title-lock">
+                <h2>Skin Changer</h2>
+                <i class="fa-solid fa-lock"></i> </div>
+            <p>Personalize skins e efeitos de finalização com segurança máxima. Guia completo de instalação e uso.</p>
+            <a href="#" class="ver-tutorial-btn" onclick="handleCardClick(this.closest('.produto-card'), 'Skin Changer');">Ver Tutorial</a>
+        </div>
+    </div>
+
+    <div class="produto-card" data-tutorial="tutorial-valorant-pro.html" onmouseenter="playVideo(this); playSelectionSound();" onmouseleave="pauseVideo(this)">
+        <div class="card-imagem-area">
+            <video class="card-video" muted loop preload="none">
+                <source src="videos/valorant-pro-preview.mp4" type="video/mp4">
+            </video>
+            <img src="imagens/valorant-pro-capa.jpg" alt="Imagem Valorant Pro" class="card-imagem">
+        </div>
+        <div class="card-badges-area">
+            <div class="badge atualizado"><i class="fa-solid fa-circle-check"></i> ATUALIZADO</div>
+            <div class="badge indetectavel"><i class="fa-solid fa-shield-halved"></i> INDETECTÁVEL</div>
+        </div>
+        <div class="card-content">
+            <div class="card-title-lock">
+                <h2>Valorant Pro</h2>
+                <i class="fa-solid fa-lock"></i> </div>
+            <p>O pacote completo de recursos de performance e assistente. Instruções de registro, drivers e configuração.</p>
+            <a href="#" class="ver-tutorial-btn" onclick="handleCardClick(this.closest('.produto-card'), 'Valorant Pro');">Ver Tutorial</a>
+        </div>
+    </div>
+    
+    <div class="produto-card" data-tutorial="tutorial-aim-pro.html" onmouseenter="playVideo(this); playSelectionSound();" onmouseleave="pauseVideo(this)">
+        <div class="card-imagem-area">
+            <video class="card-video" muted loop preload="none">
+                <source src="videos/aim-pro-preview.mp4" type="video/mp4">
+            </video>
+            <img src="imagens/aim-pro-capa.jpg" alt="Imagem Aim Pro" class="card-imagem">
+        </div>
+        <div class="card-badges-area">
+            <div class="badge atualizado"><i class="fa-solid fa-circle-check"></i> ATUALIZADO</div>
+            <div class="badge indetectavel"><i class="fa-solid fa-shield-halved"></i> INDETECTÁVEL</div>
+        </div>
+        <div class="card-content">
+            <div class="card-title-lock">
+                <h2>Aim Pro</h2>
+                <i class="fa-solid fa-lock"></i> </div>
+            <p>Tutorial do recurso Aim Pro, exclusivo para quem comprou apenas esta função. Chave separada.</p>
+            <a href="#" class="ver-tutorial-btn" onclick="handleCardClick(this.closest('.produto-card'), 'Aim Pro');">Ver Tutorial</a>
+        </div>
+    </div>
+
+    <div class="produto-card" data-tutorial="tutorial-spoofer-valorant.html" onmouseenter="playVideo(this); playSelectionSound();" onmouseleave="pauseVideo(this)">
+        <div class="card-imagem-area">
+            <video class="card-video" muted loop preload="none">
+                <source src="videos/spoofer-preview.mp4" type="video/mp4">
+            </video>
+            <img src="imagens/spoofer-capa.jpg" alt="Imagem Spoofer" class="card-imagem">
+        </div>
+        <div class="card-badges-area">
+            <div class="badge atualizado"><i class="fa-solid fa-circle-check"></i> ATUALIZADO</div>
+            <div class="badge indetectavel"><i class="fa-solid fa-shield-halved"></i> INDETECTÁVEL</div>
+        </div>
+        <div class="card-content">
+            <div class="card-title-lock">
+                <h2>Spoofer Avançado</h2>
+                <i class="fa-solid fa-lock"></i> </div>
+            <p>Guia de instalação limpa de Windows e configuração de BIOS para utilizar o Spoofer Avançado (Wofer).</p>
+            <a href="#" class="ver-tutorial-btn" onclick="handleCardClick(this.closest('.produto-card'), 'Spoofer Avançado');">Ver Tutorial</a>
+        </div>
+    </div>
+
+    <div class="produto-card" data-tutorial="tutorial-emulator.html" onmouseenter="playVideo(this); playSelectionSound();" onmouseleave="pauseVideo(this)">
+        <div class="card-imagem-area">
+            <img src="imagens/emulator.jpg" alt="Imagem Emulator" class="card-imagem">
+        </div>
+        <div class="card-badges-area">
+            <div class="badge atualizado"><i class="fa-solid fa-circle-check"></i> ATUALIZADO</div>
+            <div class="badge indetectavel"><i class="fa-solid fa-shield-halved"></i> INDETECTÁVEL</div>
+        </div>
+        <div class="card-content">
+            <div class="card-title-lock">
+                <h2>Emulator</h2>
+                <i class="fa-solid fa-lock"></i> </div>
+            <p>Guia completo de instalação e execução limpa do emulador de alta performance.</p>
+            <a href="#" class="ver-tutorial-btn" onclick="handleCardClick(this.closest('.produto-card'), 'Emulator');">Ver Tutorial</a>
+        </div>
+    </div>
+</div>
+
+<div class="suporte-cta-container">
+    <h2>Precisa de Ajuda Imediata?</h2>
+    <p>SEGUNDA A SEXTA 11:00 às 21:00.</p>
+    <a href="https://discord.gg/crazzy" class="suporte-cta-btn" target="_blank" onclick="playClickSound()">
+        <i class="fa-solid fa-play"></i> SERVIDOR CAIU, ENTREM NO NOVO!
+    </a>
+</div>
+
+<footer>
+    &copy; 2026 Rapaziada do veneno. Todos os direitos reservados.
+</footer>
+
+<div id="welcomeModal" class="modal">
+    <div class="modal-content">
+        <h3><i class="fa-solid fa-handshake-angle" style="margin-right: 10px;"></i> Bem-vindo à Central de Tutoriais!</h3>
+        <p>Muito obrigado por ter comprado os nossos produtos. Estamos aqui para garantir que sua experiência seja a melhor possível.</p>
+        <p>Qualquer dúvida ou problema durante a instalação, por favor, abra um ticket no nosso Discord para receber suporte imediato!</p>
+        <button onclick="closeWelcomeModalAndStartMusic()">Entendi!</button>
+    </div>
+</div>
+
+<div id="keyModal" class="modal">
+    <div class="modal-content">
+        <h3 id="modalTitle">Acesso Restrito</h3>
+        <p style="color: #ccc; font-size: 0.9em; margin-bottom: 25px;">Insira sua chave de acesso para visualizar o tutorial.</p>
+        <input type="text" id="keyInput" placeholder="Ex: G4CH-XXXX-XXXX-XXXX">
+        <button onclick="validateKeyAndProceed()" style="padding: 10px 20px; background: linear-gradient(90deg, #1e3a8a, #ff4b4b); color: white; border: none; border-radius: 6px; cursor: pointer;">Acessar Tutorial</button>
+        <p id="keyError" style="color: #FF6347; margin-top: 15px; display: none;"></p>
+    </div>
+</div>
+
+<audio id="selectionSound" preload="auto"><source src="sons/selection.mp3" type="audio/mpeg"></audio>
+<audio id="clickSound" preload="auto"><source src="sons/click.mp3" type="audio/mpeg"></audio>
+<audio id="backgroundMusic" preload="auto"></audio>
+
+<script>
+    function entrarNoSite() {
+        playClickSound();
+        const splash = document.getElementById('splash-screen');
+        splash.style.opacity = '0';
+        setTimeout(() => {
+            splash.style.visibility = 'hidden';
+            showWelcomeModal();
+        }, 600);
+    }
+
+    let currentTutorialUrl = '';
+    const musicTracks = [
+        { name: "Neon Dreams - Nightdrive Mix", url: "sons/musica-1.mp3" },
+        { name: "Digital Ascend - Low Poly Edit", url: "sons/musica-2.mp3" },
+        { name: "Subtle Haze - Lo-Fi Chill", url: "sons/musica-3.mp3" },
+        { name: "Cyberpunk Alley - Ambient", url: "sons/musica-4.mp3" },
+    ];
+    let currentTrackIndex = -1; 
+
+    function updateRadioIndicator(trackName) {
+        const indicatorText = document.getElementById('radioIndicatorText');
+        if (indicatorText) indicatorText.innerText = `Tocando agora na Rádio CrazzyCommunity #1 ( ${trackName} )`;
+    }
+
+    function playNextRandomTrack(isInitialStart = false) { 
+        const music = document.getElementById('backgroundMusic');
+        let newIndex;
+        do { newIndex = Math.floor(Math.random() * musicTracks.length); } while (newIndex === currentTrackIndex && musicTracks.length > 1);
+        currentTrackIndex = newIndex;
+        const track = musicTracks[currentTrackIndex];
+        music.src = track.url;
+        music.load();
+        
+        if (isInitialStart) {
+            music.volume = 0.1;
+            music.play().catch(error => console.log("Erro ao iniciar música:", error));
+        } else {
+            music.play().catch(error => {});
+        }
+        updateRadioIndicator(track.name);
+        
+        music.onended = () => playNextRandomTrack(false);
+    }
+
+    function setMusicVolume(volumePercent) {
+        const music = document.getElementById('backgroundMusic');
+        if (music) {
+            music.volume = volumePercent / 100;
+        }
+    }
+
+    function closeWelcomeModalAndStartMusic() {
+        document.getElementById('welcomeModal').style.display = 'none';
+        sessionStorage.setItem('g4cheats_welcome_seen', 'true');
+        playNextRandomTrack(true);
+    }
+
+    function showWelcomeModal() {
+        const hasSeenWelcome = sessionStorage.getItem('g4cheats_welcome_seen');
+        if (!hasSeenWelcome) {
+            document.getElementById('welcomeModal').style.display = 'block';
+        } else {
+            playNextRandomTrack(true);
+        }
+    }
+
+    function playClickSound() { document.getElementById('clickSound').play().catch(e=>{}); }
+    function playSelectionSound() { document.getElementById('selectionSound').play().catch(e=>{}); }
+    function playVideo(card) { 
+        const v = card.querySelector('.card-video'); 
+        if (v) v.play().catch(e=>{}); 
+    }
+    function pauseVideo(card) { 
+        const v = card.querySelector('.card-video'); 
+        if (v) { v.pause(); v.currentTime = 0; } 
+    }
+
+    function handleCardClick(cardElement, productName) {
+        playClickSound(); 
+        currentTutorialUrl = cardElement.getAttribute('data-tutorial');
+        document.getElementById('modalTitle').innerText = 'Acesso Restrito: ' + productName;
+        document.getElementById('keyModal').style.display = 'block';
+    }
+
+    function validateKeyAndProceed() {
+        const key = document.getElementById('keyInput').value.trim();
+        const crazzyskinRegex = /^crazzyskin-[a-f0-9]{21}$/i;
+        const hexKeyRegex = /^[a-f0-9]{32}$/i;
+        const emulatorKeyRegex = /^EMULATOR-[a-zA-Z0-9]{6}-[a-zA-Z0-9]{6}$/;
+        const customPatternKeyRegex = /^[a-zA-Z0-9]{6}-[a-zA-Z0-9]{6}-[a-zA-Z0-9]{6}$/;
+
+        if (crazzyskinRegex.test(key) || hexKeyRegex.test(key) || emulatorKeyRegex.test(key) || customPatternKeyRegex.test(key)) {
+            window.location.href = currentTutorialUrl;
+        } else {
+            const err = document.getElementById('keyError');
+            err.innerText = "Chave inválida para este produto.";
+            err.style.display = 'block';
+        }
+    }
+    function getCurrentBuyerTarget() {
+        const baseCount = 7623;
+        const dailyIncrease = 9;
+        const baseDate = new Date(2026, 7, 26); // mês 7 = agosto
+        const today = new Date();
+        baseDate.setHours(0, 0, 0, 0);
+        today.setHours(0, 0, 0, 0);
+        const elapsedDays = Math.max(0, Math.floor((today - baseDate) / 86400000));
+        return baseCount + (elapsedDays * dailyIncrease);
+    }
+
+    function animateBuyerCounter() {
+        const el = document.getElementById('buyersCount');
+        if (!el) return;
+
+        const target = getCurrentBuyerTarget();
+        const duration = 1800;
+        const start = performance.now();
+
+        function tick(now) {
+            const progress = Math.min((now - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 4);
+            const value = Math.floor(target * eased);
+            el.textContent = value.toLocaleString('pt-BR');
+
+            if (progress < 1) requestAnimationFrame(tick);
+            else el.textContent = target.toLocaleString('pt-BR');
+        }
+        requestAnimationFrame(tick);
+    }
+    const statsObserver = new IntersectionObserver((entries, observer) => {
+        if (entries.some(entry => entry.isIntersecting)) {
+            animateBuyerCounter();
+            observer.disconnect();
+        }
+    }, { threshold: 0.2 });
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const stats = document.querySelector('.live-stats');
+        if (stats) statsObserver.observe(stats);
+    });
+
+window.onclick = function(event) {
+    const keyModal = document.getElementById('keyModal');
+    if (event.target == keyModal) {
+        keyModal.style.display = "none";
+    }
+}
+</script>
+</body>
+</html>

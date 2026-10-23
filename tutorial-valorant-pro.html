@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial | Valorant Pro - OS GURI XITADO</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <style>
+        /* PALETA: #1C1C1C (Fundo Body), #2A2A2A (Header/Blocos), #111111 (Code/Destaque Fundo) */
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1C1C1C;
+            color: #E0E0E0;
+            line-height: 1.6;
+            visibility: visible; 
+        }
+
+        /* --- ESTILO DO PRELOADER (LOGO GIRATÓRIO) --- */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #1C1C1C; 
+            z-index: 9999; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Centraliza Verticalmente */
+            align-items: center; /* Centraliza Horizontalmente */
+            opacity: 1;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .preloader-logo {
+            width: 200px; 
+            height: 200px;
+            animation: spin 1.5s infinite linear; /* Efeito de giro */
+        }
+
+        /* Animação de Giro */
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Classe para esconder o preloader no JS */
+        .hidden-preloader {
+            opacity: 0;
+            visibility: hidden;
+        }
+        /* --- FIM ESTILO PRELOADER --- */
+
+        /* --- ESTILOS DE LAYOUT --- */
+        header {
+            background-color: #2A2A2A;
+            padding: 20px 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .header-content {
+            width: 90%;
+            max-width: 1200px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between; 
+        }
+
+        .logo-area img {
+            height: 50px; 
+        }
+        
+        .logo-area a {
+             text-decoration: none;
+        }
+
+        .titulo-area {
+            text-align: right;
+        }
+        
+        h1 {
+            color: #E0E0E0;
+            font-size: 1.5em; 
+            margin: 0;
+            font-weight: 300;
+        }
+
+        .subtitulo {
+            color: #999999;
+            margin-top: 5px;
+            font-size: 0.9em;
+        }
+
+        .tutorial-container {
+            width: 90%;
+            max-width: 900px; 
+            margin: 40px auto;
+            padding: 0 20px;
+            text-align: left;
+        }
+
+        .tutorial-container h2 {
+            color: #00A8FF; 
+            border-bottom: 2px solid #3A3A3A;
+            padding-bottom: 10px;
+            margin-top: 30px;
+            font-size: 1.8em;
+            font-weight: 600;
+        }
+        
+        .tutorial-container p {
+            margin-bottom: 20px;
+            color: #ccc;
+        }
+        
+        .tutorial-container ul {
+            list-style: none; /* Remove bullet points padrão */
+            padding-left: 0;
+        }
+
+        .tutorial-container ul li {
+            margin-bottom: 15px;
+            color: #ccc;
+        }
+
+        /* Estilo para simular os emojis do Discord (Raio, Seta, Info) */
+        .discord-icon {
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+        .icon-raio { color: #FFD700; /* Dourado */ }
+        .icon-seta { color: #00A8FF; /* Azul */ }
+        .icon-info { color: #8A2BE2; /* Roxo */ }
+
+        /* Bloco de Alerta */
+        .atencao {
+            background-color: #2A1C1C; 
+            border: 1px solid #FF6347; 
+            color: #FF6347;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 25px 0;
+            font-weight: bold;
+        }
+        
+        footer {
+            margin-top: 50px;
+            padding: 20px;
+            color: #555;
+            font-size: 0.8em;
+            background-color: #2A2A2A;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="preloader">
+        <img src="imagens/preloader-logo.png" alt="Carregando OS GURI XITADO" class="preloader-logo">
+    </div>
+    <header>
+        <div class="header-content">
+            <div class="logo-area">
+                <a href="index.html"><img src="imagens/sua-logo.png" alt="Logo OS GURI XITADO"></a>
+            </div>
+
+            <div class="titulo-area">
+                <h1>Tutorial: Valorant Pro</h1>
+                <p class="subtitulo">Instruções de Registro e Drivers - ATUALIZADO.</p>
+            </div>
+        </div>
+    </header>
+
+    <div class="tutorial-container">
+        
+        <h2><span class="discord-icon icon-raio">⚡</span> TUTORIAL VAL PRO</h2>
+        
+        <h3>1️⃣ Registro da Sua Conta</h3>
+        <p>
+            Acesse o site de registro para criar sua conta Val Pro:
+            <br><span class="discord-icon icon-seta">➡️</span> 
+            <a href="https://drive.google.com/file/d/1D1hBbu9TZ3H5b1v-XY-QRBzu9Y1lIDK5/view?usp=sharing" target="_blank" style="color: #00A8FF; font-weight: bold; text-decoration: none;">[ Download Aqui ]</a>
+        </p>
+        
+                <h3> TUTORIAL EM VIDEO (NO APOWERREC, PAUSE A GRAVAÇÃO E DEIXE PAUSADA)</h3>
+        <p>
+            Assista o video tutorial:
+            <br><span class="discord-icon icon-seta">➡️</span> 
+            <a href="https://drive.google.com/file/d/1Szhn5z3Kux9YGWTMOmi7I_Fqyxs57qHm/view?usp=sharing" target="_blank" style="color: #00A8FF; font-weight: bold; text-decoration: none;">[ Download Aqui ]</a>
+        </p>
+        
+        <ul style="list-style-type: square; padding-left: 25px;">
+            <li>Crie seu <strong>usuário</strong> e <strong>senha</strong>.</li>
+            <li>Utilize sua <strong>chave de produto</strong> para concluir o registro.</li>
+        </ul>
+        
+        <p>
+            Após criar sua conta, acesse o <strong>Painel</strong> para:
+        </p>
+        
+        <ul style="list-style-type: square; padding-left: 25px;">
+            <li>📥 Baixar o <strong>Loader</strong></li>
+            <li>📘 Visualizar os <strong>Tutoriais de Instalação e Uso</strong></li>
+        </ul>
+
+
+        <hr style="border-color: #3A3A3A; margin: 30px 0;">
+
+        <h2><span class="discord-icon icon-info">ℹ️</span> Drivers Obrigatórios</h2>
+        
+        <p>
+            Instale os drivers listados abaixo para garantir o funcionamento correto do produto:
+        </p>
+
+        <ul style="list-style-type: square; padding-left: 25px;">
+            <li>
+                <strong style="color: #00FFC0;">VISUAL C++:</strong> 
+                <a href="https://aka.ms/vs/17/release/vc_redist.x64.exe" target="_blank" style="color: #00A8FF; text-decoration: none;">
+                    [ CLIQUE PARA BAIXAR ]
+                </a>
+            </li>
+            <li>
+                <strong style="color: #00FFC0;">DIRECT X3D:</strong> 
+                <a href="https://www.microsoft.com/pt-br/download/details.aspx?id=35&msockid=0b6a3957e50162270f8b2c33e456630c" target="_blank" style="color: #00A8FF; text-decoration: none;">
+                    [ CLIQUE PARA BAIXAR ]
+                </a>
+            </li>
+        </ul>
+
+        <div class="atencao">
+            <i class="fa-solid fa-power-off" style="margin-right: 10px;"></i>
+            <strong>IMPORTANTE:</strong> Após a instalação, por favor, **reinicie seu computador** para que os drivers funcionem corretamente.
+        </div>
+        
+    </div>
+
+    <footer>
+        <p style="font-size: 1em; margin-bottom: 10px; color: #E0E0E0;">@everyone</p>
+        &copy; 2024 OS GURI XITADO. Todos os direitos reservados.
+    </footer>
+
+    <script>
+        // FUNÇÃO DE PRELOADER (Aplica o giro e some após 1.5s)
+        window.addEventListener('load', function() {
+            const preloader = document.getElementById('preloader');
+            
+            // Oculta o preloader após 1.5 segundos
+            setTimeout(() => {
+                preloader.classList.add('hidden-preloader');
+            }, 1500); 
+        });
+    </script>
+</body>
+</html>

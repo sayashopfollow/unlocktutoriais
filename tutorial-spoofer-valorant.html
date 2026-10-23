@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial de Utilização - OS GURI XITADO</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1C1C1C;
+            color: #E0E0E0;
+            line-height: 1.6;
+            visibility: visible; 
+        }
+
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #1C1C1C; 
+            z-index: 9999; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 1;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .preloader-logo {
+            width: 200px; 
+            height: 200px;
+            animation: spin 1.5s infinite linear;
+        }
+
+        @keyframes spin {
+            0% { 
+                transform: rotate(0deg); 
+            }
+            100% { 
+                transform: rotate(360deg); 
+            }
+        }
+
+        .hidden-preloader {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        header {
+            background-color: #2A2A2A;
+            padding: 20px 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .header-content {
+            width: 90%;
+            max-width: 1200px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between; 
+        }
+
+        .logo-area img {
+            height: 50px; 
+        }
+        
+        .logo-area a {
+            text-decoration: none;
+        }
+
+        .titulo-area {
+            text-align: right;
+        }
+        
+        h1 {
+            color: #E0E0E0;
+            font-size: 1.5em; 
+            margin: 0;
+            font-weight: 300;
+        }
+
+        .subtitulo {
+            color: #999999;
+            margin-top: 5px;
+            font-size: 0.9em;
+        }
+
+        .tutorial-layout {
+            width: 90%;
+            max-width: 1200px;
+            margin: 40px auto;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+
+        .gitbook-sidebar {
+            background-color: #222222;
+            border: 1px solid #333333;
+            border-radius: 8px;
+            padding: 20px;
+            position: sticky;
+            top: 20px;
+        }
+
+        .gitbook-sidebar h3 {
+            color: #00A8FF;
+            font-size: 1.1em;
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .gitbook-sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .gitbook-sidebar ul li {
+            margin-bottom: 10px;
+        }
+
+        .gitbook-sidebar ul li a {
+            color: #B0B0B0;
+            text-decoration: none;
+            font-size: 0.95em;
+            display: flex;
+            align-items: center;
+            padding: 8px 10px;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .gitbook-sidebar ul li a:hover,
+        .gitbook-sidebar ul li a.active {
+            color: #FFFFFF;
+            background-color: #2A2A2A;
+            border-left: 3px solid #00A8FF;
+        }
+
+        .tutorial-container {
+            background-color: #222222;
+            border: 1px solid #333333;
+            border-radius: 8px;
+            padding: 40px;
+            text-align: left;
+        }
+
+        .tutorial-container h2 {
+            color: #00A8FF; 
+            border-bottom: 2px solid #3A3A3A;
+            padding-bottom: 10px;
+            margin-top: 40px;
+            font-size: 1.8em;
+            font-weight: 600;
+        }
+
+        .tutorial-container h2:first-of-type {
+            margin-top: 0;
+        }
+
+        .tutorial-container h3 {
+            color: #E0E0E0;
+            margin-top: 25px;
+            font-size: 1.3em;
+        }
+        
+        .tutorial-container p {
+            margin-bottom: 20px;
+            color: #ccc;
+        }
+        
+        .atencao {
+            background-color: #2A1C1C; 
+            border: 1px solid #FF6347; 
+            color: #FF6347;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 25px 0;
+            font-weight: bold;
+        }
+
+        .sucesso {
+            background-color: #1c2a1c;
+            border: 1px solid #00FFC0;
+            color: #00FFC0;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 25px 0;
+            font-weight: bold;
+        }
+
+        .code-block {
+            background-color: #111111; 
+            color: #00FFC0; 
+            padding: 15px;
+            border-radius: 6px;
+            margin: 20px 0;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 0.9em;
+            border-left: 4px solid #FF6347; 
+        }
+
+        .tutorial-container ul {
+            list-style-type: disc;
+            padding-left: 25px;
+        }
+        
+        .tutorial-container ul li {
+            margin-bottom: 10px;
+            color: #ccc;
+        }
+
+        .link-custom {
+            color: #00A8FF;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .link-custom:hover {
+            text-decoration: underline;
+        }
+
+        .download-box {
+            background-color: #111111;
+            border-left: 4px solid #00A8FF;
+            padding: 18px;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+
+        .download-box p {
+            margin: 0 0 12px 0;
+        }
+
+        .download-button {
+            display: inline-block;
+            background-color: #00A8FF;
+            color: #ffffff;
+            padding: 12px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.2s ease;
+            margin: 5px 5px 5px 0;
+        }
+
+        .download-button:hover {
+            background-color: #008bd1;
+            text-decoration: none;
+        }
+        
+        footer {
+            margin-top: 50px;
+            padding: 40px 20px;
+            color: #555;
+            font-size: 0.8em;
+            background-color: #2A2A2A;
+            text-align: center;
+        }
+
+        kbd {
+            background-color: #111;
+            border: 1px solid #444;
+            border-radius: 3px;
+            padding: 2px 6px;
+            color: #00FFC0;
+            font-family: monospace;
+        }
+
+        @media (max-width: 900px) {
+            .tutorial-layout {
+                grid-template-columns: 1fr;
+                width: 92%;
+                margin: 20px auto;
+            }
+
+            .gitbook-sidebar {
+                position: static;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+
+            .titulo-area {
+                text-align: center;
+            }
+
+            h1 {
+                font-size: 1.3em;
+            }
+
+            .tutorial-container {
+                padding: 20px 15px;
+            }
+
+            .tutorial-container h2 {
+                font-size: 1.5em;
+            }
+
+            .tutorial-container h3 {
+                font-size: 1.15em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="preloader">
+        <img src="imagens/preloader-logo.png" alt="Carregando OS GURI XITADO" class="preloader-logo">
+    </div>
+
+    <header>
+        <div class="header-content">
+            <div class="logo-area">
+                <a href="index.html">
+                    <img src="imagens/sua-logo.png" alt="Logo OS GURI XITADO">
+                </a>
+            </div>
+
+            <div class="titulo-area">
+                <h1>Painel de Tutoriais</h1>
+                <p class="subtitulo">Guia de instalação e utilização do sistema.</p>
+            </div>
+        </div>
+    </header>
+
+    <div class="tutorial-layout">
+        <aside class="gitbook-sidebar">
+            <h3>Sumário</h3>
+            <ul>
+                <li><a href="#spoffer" class="active"><i class="fa-solid fa-shield-halved" style="margin-right: 8px;"></i> Sp0ffer</a></li>
+                <li><a href="#passo-1"><i class="fa-solid fa-desktop" style="margin-right: 8px;"></i> 1º passo - Formatar</a></li>
+                <li><a href="#passo-2"><i class="fa-solid fa-microchip" style="margin-right: 8px;"></i> 2º passo - FLASH BIOS</a></li>
+                <li><a href="#passo-3"><i class="fa-solid fa-gear" style="margin-right: 8px;"></i> 3º passo - Config BIOS</a></li>
+                <li><a href="#passo-4"><i class="fa-solid fa-windows" style="margin-right: 8px;"></i> 4º passo - Config Windows</a></li>
+                <li><a href="#passo-5"><i class="fa-solid fa-bolt" style="margin-right: 8px;"></i> 5º passo - Spoffer</a></li>
+            </ul>
+        </aside>
+
+        <main class="tutorial-container">
+            
+            <h2 id="spoffer">
+                <i class="fa-solid fa-shield-halved" style="margin-right: 10px;"></i>
+                Sp0ffer
+            </h2>
+
+            <div class="atencao">
+                Spoffer Atualizado - 01/08/2026
+            </div>
+            
+            <p style="color: #00A8FF; font-weight: bold;">
+                O tutorial do spoffer é o mais complexo que temos, exige atenção para que tudo seja feito da exata forma ensinada, pois se algum passo for esquecido ou feito na ordem ou forma errada, você não vai conseguir remover seu ban!
+            </p>
+
+            <p>
+                <i class="fa-solid fa-lock" style="color: #FF6347; margin-right: 5px;"></i> <strong>A senha de todos arquivos criptografados é <kbd>123</kbd></strong>
+            </p>
+
+            <div class="atencao" style="background-color: #2a2a1c; border-color: #ffd700; color: #ffd700;">
+                ⚠ <strong>Execute todos os aplicativos e drivers como <span style="color: cyan;">ADMINISTRADOR</span></strong>
+            </div>
+
+            <h3 id="passo-1">
+                1º passo - Formate o Computador
+            </h3>
+            <p style="color: #00A8FF;">
+                (Obrigatório formatar para o Windows 10 Versão <strong>Pro</strong>)
+            </p>
+
+            <p>
+                <a href="https://youtu.be/gVBIwsiPloQ" target="_blank" class="download-button">
+                    <i class="fa-brands fa-youtube" style="margin-right: 8px;"></i> TUTORIAL DE COMO FORMATAR O PC
+                </a>
+            </p>
+            <p>
+                <a href="https://go.microsoft.com/fwlink/?LinkId=2265055" target="_blank" class="download-button">
+                    <i class="fa-solid fa-arrow-down-to-bracket" style="margin-right: 8px;"></i> FERRAMENTA USADA NO VÍDEO
+                </a>
+            </p>
+
+            <div class="atencao" style="background-color: #2a2a1c; border-color: #ffd700; color: #ffd700;">
+                ⚠ <strong>IMPORTANTE:</strong>
+                <ul style="color: #00A8FF; margin-top: 10px; margin-bottom: 0;">
+                    <li>Mantenha-se OFFLINE! Não faça login na sua conta Microsoft.</li>
+                    <li>Pule ou recuse todas perguntas de privacidade durante a formatação</li>
+                    <li>Não faça login no OneDrive, Geforce Experience, ou Logitech G Hub (Pode baixar os drivers mas não faça login em nada)</li>
+                </ul>
+            </div>
+
+            <h3 id="passo-2">
+                2º passo - FLASH BIOS
+            </h3>
+            <div class="atencao" style="background-color: #2a2a1c; border-color: #ffd700; color: #ffd700;">
+                ⚠ <strong>Recomandamos realizar 2 flashs</strong>
+            </div>
+
+            <p style="color: #00A8FF;">
+                Você vai precisar alterar a versão da sua BIOS<br>
+                Tutorial de como fazer o Flash em algumas placas:<br>
+                <i class="fa-brands fa-youtube" style="color: #FF6347;"></i> 
+                <a href="https://youtu.be/Em7SRaG3L_0" target="_blank" class="link-custom">Asus</a> - 
+                <a href="https://youtu.be/dUCWRqOdLUw" target="_blank" class="link-custom">Asrock</a> - 
+                <a href="https://youtu.be/DIIde3s02kM" target="_blank" class="link-custom">Gigabyte</a> - 
+                <a href="https://youtu.be/AwOax1uWgYc" target="_blank" class="link-custom">Lenovo</a> - 
+                <a href="https://youtu.be/sKMub20CUNI" target="_blank" class="link-custom">MSI</a> - 
+                <a href="https://youtu.be/l0fr_DstgR0?si=qdYui6ZNWLgQoZnR" target="_blank" class="link-custom">Aorus</a> - 
+                <a href="https://www.youtube.com/watch?v=SL-AsKwiCcc" target="_blank" class="link-custom">Biostar</a>
+            </p>
+
+            <p style="color: #00A8FF;">Se sua placa não está aqui procure um tutorial no YouTube</p>
+            <p style="color: #00A8FF;">
+                Se a sua placa não tem compatibilidade com o flash faça o seguinte:<br>
+                <i class="fa-brands fa-youtube" style="color: #FF6347;"></i> <a href="https://youtu.be/asYjX6Bi88Y" target="_blank" class="link-custom">Remova a pilha da placa por 15 minutos depois insira novamente</a>
+            </p>
+
+            <div class="atencao" style="background-color: #2a2a1c; border-color: #ffd700; color: #ffd700;">
+                ⚠ <strong>Após terminar o 1º flash faça o processo mais uma vez para ter certeza</strong>
+            </div>
+            <p style="color: #00A8FF;">Após fazer os 2 flashs, inicie o windows normalmente</p>
+
+            <h3 id="passo-3">
+                3º passo - Config da BIOS
+            </h3>
+            <p style="color: #00A8FF;">
+                Após terminar o flash, volte na BIOS e:<br>
+                - Ative o SecureBoot [Enable no modo Standard]<br>
+                - Ative a Virtualization/SVM Mode<br>
+                <span style="color: #ffd700;">⚠</span> <strong style="color: #ffd700;">Desative o TPM 2.0</strong><br>
+                - Aperte F10 para salvar e iniciar o Windows<br>
+                - Assim que o Windows iniciar, pesquise por Isolamento de Núcleo e ative-o!<br>
+                - Por fim reinicie o computador mais uma vez para aplicar a modificação
+            </p>
+
+            <h3 id="passo-4">
+                4º passo - Config do Windows
+            </h3>
+            <ul>
+                <li><i class="fa-brands fa-youtube" style="color: #FF6347;"></i> <a href="https://www.youtube.com/watch?v=EDVB5px38n0" target="_blank" class="link-custom">DESATIVE o IPv6</a></li>
+                <li><a href="https://www.win-rar.com/postdownload.html?&L=9" target="_blank" class="link-custom">Baixe e Instale o Winrar</a> (necessário para extrair os arquivos)</li>
+                <li><i class="fa-brands fa-youtube" style="color: #FF6347;"></i> <a href="https://www.youtube.com/watch?v=RrLPSORxE4s" target="_blank" class="link-custom">Desative os Antvirus e Windows Defender</a></li>
+                <li><a href="https://drive.usercontent.google.com/download?id=1jxmKjN820qP_cLZLgbeBi-aP5DUbROle&export=download&authuser=0" target="_blank" class="link-custom">Desativador do Windows Defender</a></li>
+                <li><a href="https://www.mediafire.com/file/6ogyuagve1bf6bl/bloq+2077.bat/file" target="_blank" class="link-custom">Bloqueie o Windows Update</a></li>
+                <li><a href="https://www.mediafire.com/file/kym2vmt7d8nis3x/Drivers.rar/file" target="_blank" class="link-custom">Baixe e Instale os drivers obrigatórios</a></li>
+            </ul>
+
+            <h4 style="color: #00A8FF; margin-top: 20px;">
+                Após completar o 4º passo <i class="fa-solid fa-arrow-right"></i> <strong style="color: #fff;">REINICIE O COMPUTADOR</strong> <kbd style="color: cyan;">OBRIGATÓRIO</kbd>
+            </h4>
+
+            <h3 id="passo-5">
+                5º passo - Spoffer
+            </h3>
+            <div class="atencao" style="background-color: #2a2a1c; border-color: #ffd700; color: #ffd700;">
+                ⚠ <strong>IMPORTANTE:</strong>
+            </div>
+            <p style="color: #00A8FF;">
+                Baixe seus drivers de internet ANTES de usar o spoffer<br>
+                (não será obrigatório usar mas caso seja necessário você precisa ter!)
+            </p>
+            <p style="color: #00A8FF;">Você usa Internet via Cabo ou Wifi ?</p>
+            <ul>
+                <li style="color: #00A8FF;">
+                    Internet via Cabo <i class="fa-solid fa-arrow-right"></i> 
+                    <a href="https://www.mediafire.com/file/96xfc78ra7x1hzb/Cabo_Internet_Driver.rar/file" target="_blank" class="download-button" style="padding: 6px 12px; font-size: 0.85em;">DRIVER INTERNET CABO</a>
+                </li>
+                <li style="color: #00A8FF;">
+                    Internet Wifi <i class="fa-solid fa-arrow-right"></i> 
+                    <a href="https://www.mediafire.com/file/rd443mmz9k2k6ky/Op%25C3%25A7%25C3%25A3o_1_Wifi_Internet_Driver.zip/file" target="_blank" class="download-button" style="padding: 6px 12px; font-size: 0.85em;">OPÇÃO 1</a>
+                    <a href="https://www.mediafire.com/file/ub1evojqclet23i/Op%25C3%25A7%25C3%25A3o_2_Wifi_Internet_Driver.zip/file" target="_blank" class="download-button" style="padding: 6px 12px; font-size: 0.85em;">OPÇÃO 2</a>
+                    <a href="https://www.mediafire.com/file/4gauil6ruijwbai/Op%25C3%25A7%25C3%25A3o_3_Wifi_Internet_Driver.zip/file" target="_blank" class="download-button" style="padding: 6px 12px; font-size: 0.85em;">OPÇÃO 3</a>
+                </li>
+            </ul>
+
+            <p style="color: #00A8FF;">
+                Após baixar os drivers de internet, mantenha-os guardados!<br>
+                Caso seja necessários após usar o Spoffer
+            </p>
+
+            <h4 style="color: #00A8FF; margin-top: 25px;">Hora de Spoffar</h4>
+            <p style="color: #00A8FF;">
+                Baixe o Serial Checker <i class="fa-solid fa-arrow-right"></i> 
+                <a href="https://www.mediafire.com/file/2avqaiys1svot6l/HWID.bat/file" target="_blank" class="download-button" style="padding: 6px 12px; font-size: 0.85em;">DOWNLOAD SERIAL CHECKER</a><br>
+                Execute o app <kbd>HWID</kbd> como <strong style="color: cyan;">ADMINISTRADOR</strong><br>
+                Um CMD irá abrir mostrando seus seriais, salve tirando print ou copiando as informações<br>
+                (Vamos precisar checar as informações depois de spoffar)
+            </p>
+
+            <p style="color: #00A8FF;">
+                Baixe o spoffer <i class="fa-solid fa-arrow-right"></i> 
+                <a href="https://drive.google.com/file/d/1Xy8Li8QaaYl67BMKt2j7GoR-mzvYVqwS/view?usp=sharing" target="_blank" class="download-button" style="padding: 6px 12px; font-size: 0.85em;">DOWNLOAD SP0FFER</a><br>
+                Extraia usando o Winrar<br>
+                Execute o spoffer como <strong style="color: cyan;">ADMINISTRADOR</strong> e use sua key para se registrar<br>
+                Assim que se registrar, use a opção <kbd>Spoffer</kbd><br>
+                Após concluir, reinicie o computador e use o Serial Checker <kbd>HWID</kbd> novamente para comparar os seriais antigos com os novos<br>
+                Caso todos seriais estejam diferentes significa que o spoffer funcionou, baixe o Valorant<br>
+                Após finalizar a instalação do jogo, reinicie o computador para iniciar o Vanguard<br>
+                Quando iniciar abra o spoffer antes de entrar no jogo e use a opção <kbd>TPM SPOFFER</kbd><br>
+                <strong style="color: #ffd700;">VOCÊ VAI PRECISAR USAR A OPÇÃO</strong> <kbd>TPM SPOFFER</kbd> <strong style="color: #ffd700;">SEMPRE ANTES DE ENTRAR NO JOGO</strong><br>
+                Após usar o <kbd>TPM SPOFFER</kbd> é só entrar no jogo e aproveitar <i class="fa-regular fa-face-smile" style="color: #00FFC0;"></i>
+            </p>
+
+        </main>
+    </div>
+
+    <footer>
+        <p style="font-size: 1.1em; color: #E0E0E0; margin-bottom: 10px;">
+            @everyone
+        </p>
+        &copy; 2024 OS GURI XITADO. Todos os direitos reservados.
+    </footer>
+
+    <script>
+        window.addEventListener('load', function() {
+            const preloader = document.getElementById('preloader');
+
+            setTimeout(() => {
+                preloader.classList.add('hidden-preloader');
+            }, 1500); 
+        });
+    </script>
+</body>
+</html>

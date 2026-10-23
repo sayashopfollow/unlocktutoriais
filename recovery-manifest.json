@@ -1,0 +1,110 @@
+[
+  {
+    "file": "index-enviado.html",
+    "bytes": 32004,
+    "tutorials": [
+      "tutorial-aim-pro.html",
+      "tutorial-emulator.html",
+      "tutorial-skin-changer.html",
+      "tutorial-spoofer-valorant.html",
+      "tutorial-valorant-pro.html"
+    ],
+    "external_urls": [
+      "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css",
+      "https://discord.gg/crazzy"
+    ]
+  },
+  {
+    "file": "index.html",
+    "bytes": 32826,
+    "tutorials": [
+      "tutorial-aim-pro.html",
+      "tutorial-emulator.html",
+      "tutorial-skin-changer.html",
+      "tutorial-spoofer-valorant.html",
+      "tutorial-valorant-pro.html"
+    ],
+    "external_urls": [
+      "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css",
+      "https://discord.gg/crazzy"
+    ]
+  },
+  {
+    "file": "tutorial-aim-pro.html",
+    "bytes": 11070,
+    "tutorials": [],
+    "external_urls": [
+      "https://aka.ms/vs/17/release/vc_redist.x64.exe",
+      "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css",
+      "https://drive.google.com/file/d/1kYkYvAshoZQfy01zM6MtdV44bARcIlTC/view?usp=sharing",
+      "https://www.microsoft.com/pt-br/download/details.aspx?id=35&msockid=0b6a3957e50162270f8b2c33e456630c",
+      "https://www.youtube.com/embed/b6Sa71gBeOU",
+      "https://www.youtube.com/embed/wGZk07qwtUc"
+    ]
+  },
+  {
+    "file": "tutorial-emulator.html",
+    "bytes": 16752,
+    "tutorials": [],
+    "external_urls": [
+      "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css",
+      "https://drive.google.com/file/d/1xPBaSWjsc7kZu42VYmh4oBQTrkmPSrDB/view?usp=sharing",
+      "https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Rajdhani:wght@500;600;700&display=swap",
+      "https://www.techpowerup.com/download/visual-c-redistributable-runtime-package-all-in-one/?utm_source=chatgpt.com",
+      "https://www.youtube.com/embed/rLwqnthctqU"
+    ]
+  },
+  {
+    "file": "tutorial-skin-changer.html",
+    "bytes": 30141,
+    "tutorials": [],
+    "external_urls": [
+      "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css",
+      "https://drive.google.com/file/d/1U3Zj4nyCDlzZfYtTIj9WgQBzNrQWyWNN/view?usp=sharing",
+      "https://drive.usercontent.google.com/download?id=1eRr-ADlCOPQV4Pv867CDRCBVJX3Qwalw&export=download&authuser=0",
+      "https://www.youtube.com/embed/5vmhXBoyXPQ"
+    ]
+  },
+  {
+    "file": "tutorial-spoofer-valorant.html",
+    "bytes": 21745,
+    "tutorials": [],
+    "external_urls": [
+      "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css",
+      "https://drive.google.com/file/d/1Xy8Li8QaaYl67BMKt2j7GoR-mzvYVqwS/view?usp=sharing",
+      "https://drive.usercontent.google.com/download?id=1jxmKjN820qP_cLZLgbeBi-aP5DUbROle&export=download&authuser=0",
+      "https://go.microsoft.com/fwlink/?LinkId=2265055",
+      "https://www.mediafire.com/file/2avqaiys1svot6l/HWID.bat/file",
+      "https://www.mediafire.com/file/4gauil6ruijwbai/Op%25C3%25A7%25C3%25A3o_3_Wifi_Internet_Driver.zip/file",
+      "https://www.mediafire.com/file/6ogyuagve1bf6bl/bloq+2077.bat/file",
+      "https://www.mediafire.com/file/96xfc78ra7x1hzb/Cabo_Internet_Driver.rar/file",
+      "https://www.mediafire.com/file/kym2vmt7d8nis3x/Drivers.rar/file",
+      "https://www.mediafire.com/file/rd443mmz9k2k6ky/Op%25C3%25A7%25C3%25A3o_1_Wifi_Internet_Driver.zip/file",
+      "https://www.mediafire.com/file/ub1evojqclet23i/Op%25C3%25A7%25C3%25A3o_2_Wifi_Internet_Driver.zip/file",
+      "https://www.win-rar.com/postdownload.html?&L=9",
+      "https://www.youtube.com/watch?v=EDVB5px38n0",
+      "https://www.youtube.com/watch?v=RrLPSORxE4s",
+      "https://www.youtube.com/watch?v=SL-AsKwiCcc",
+      "https://youtu.be/AwOax1uWgYc",
+      "https://youtu.be/DIIde3s02kM",
+      "https://youtu.be/Em7SRaG3L_0",
+      "https://youtu.be/asYjX6Bi88Y",
+      "https://youtu.be/dUCWRqOdLUw",
+      "https://youtu.be/gVBIwsiPloQ",
+      "https://youtu.be/l0fr_DstgR0?si=qdYui6ZNWLgQoZnR",
+      "https://youtu.be/sKMub20CUNI"
+    ]
+  },
+  {
+    "file": "tutorial-valorant-pro.html",
+    "bytes": 8748,
+    "tutorials": [],
+    "external_urls": [
+      "https://aka.ms/vs/17/release/vc_redist.x64.exe",
+      "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css",
+      "https://drive.google.com/file/d/1D1hBbu9TZ3H5b1v-XY-QRBzu9Y1lIDK5/view?usp=sharing",
+      "https://drive.google.com/file/d/1Szhn5z3Kux9YGWTMOmi7I_Fqyxs57qHm/view?usp=sharing",
+      "https://www.microsoft.com/pt-br/download/details.aspx?id=35&msockid=0b6a3957e50162270f8b2c33e456630c"
+    ]
+  }
+]

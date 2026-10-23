@@ -1,0 +1,29 @@
+EXISTS index.html
+GET tutorial-skin-changer.html
+GET tutorial-emulator.html
+GET tutorial-valorant-pro.html
+EXISTS tutorial-aim-pro.html
+GET tutorial-spoofer-valorant.html
+GET logo.gif
+GET imagens/preloader-logo.png
+GET imagens/sua-logo.png
+EXISTS imagens/aim-pro-capa.jpg
+EXISTS imagens/emulator.jpg
+EXISTS imagens/skin-changer-capa.jpg
+GET imagens/spoofer-capa.jpg
+GET imagens/valorant-pro-capa.jpg
+GET videos/aim-pro-preview.mp4
+GET videos/skin-changer-preview.mp4
+curl: (28) Operation timed out after 120000 milliseconds with 33208478 out of 42369095 bytes received
+GET videos/spoofer-preview.mp4
+curl: (28) Operation timed out after 120000 milliseconds with 29556853 out of 70653259 bytes received
+curl: (28) Operation timed out after 120000 milliseconds with 51499353 out of 70653259 bytes received
+curl: (28) Operation timed out after 120000 milliseconds with 33896228 out of 70653259 bytes received
+FAILED videos/spoofer-preview.mp4
+GET videos/valorant-pro-preview.mp4
+GET sons/click.mp3
+GET sons/selection.mp3
+GET sons/musica-1.mp3
+GET sons/musica-2.mp3
+GET sons/musica-3.mp3
+GET sons/musica-4.mp3
